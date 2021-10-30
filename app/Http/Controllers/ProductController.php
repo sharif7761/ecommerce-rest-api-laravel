@@ -90,6 +90,9 @@ class ProductController extends Controller
         $request['details'] = $request->description;
         unset($request['description']);
         $product->update($request->all());
+        return response([
+            'data' => new ProductResource($product)
+        ], Response::HTTP_CREATED);
     }
 
     /**
